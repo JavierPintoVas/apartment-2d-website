@@ -1,4 +1,24 @@
 const myBulb = document.getElementById("myBulb");
+// Obtén el contenedor del video y el elemento de video
+const videoContainer = document.getElementById("video-container");
+const videoElement = document.getElementById("video-element");
+// Solicita acceso a la cámara del usuario
+const startCamera = () => {
+  navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then(function (stream) {
+      // Muestra el video en el elemento de video
+
+      videoElement.srcObject = stream;
+      videoElement.play();
+
+      // Inserta el elemento de video dentro del contenedor
+      videoContainer.appendChild(videoElement);
+    })
+    .catch(function (error) {
+      console.error("Error al obtener acceso a la cámara:", error);
+    });
+};
 // Request permission to use the microphone
 navigator.mediaDevices
   .getUserMedia({ audio: true })
@@ -12,14 +32,18 @@ navigator.mediaDevices
 
       // Handle recognition events
       recognition.addEventListener("result", function (event) {
+        // TODO Quitar caracteres especiales, tildes!
         const text = event.results[0][0].transcript; // Hola Javier, prende la luz por favor
         recognition.stop();
+        console.log(text);
         // Si text incluye "prende la luz"
         // Entonces prende la luz
         if (text.includes("prende la luz")) {
           myBulb.style.backgroundColor = "yellow";
         } else if (text.includes("apaga la luz")) {
           myBulb.style.backgroundColor = "black";
+        } else if (text.includes("prende la cámara")) {
+          startCamera();
         } else {
           alert("no reconoci el comando");
         }

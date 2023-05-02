@@ -19,22 +19,31 @@ const startCamera = () => {
       console.error("Error al obtener acceso a la cámara:", error);
     });
 };
+
+const stopCamera = () => {
+  if (videoElement.srcObject) {
+    videoElement.pause();
+    videoElement.srcObject = null;
+  }
+};
 // Request permission to use the microphone
 navigator.mediaDevices
   .getUserMedia({ audio: true })
   .then(function (stream) {
     try {
       // Create a new SpeechRecognition object
+
       const recognition = new window.webkitSpeechRecognition();
       console.log(recognition);
       // Configure the recognition object
       recognition.lang = "es-US";
+      recognition.continuous = true;
 
       // Handle recognition events
       recognition.addEventListener("result", function (event) {
+        console.log(event);
         // TODO Quitar caracteres especiales, tildes!
-        const text = event.results[0][0].transcript; // Hola Javier, prende la luz por favor
-        recognition.stop();
+        const text = event.results[event.results.length - 1][0].transcript; // Hola Javier, prende la luz por favor
         console.log(text);
         // Si text incluye "prende la luz"
         // Entonces prende la luz
@@ -44,28 +53,19 @@ navigator.mediaDevices
           myBulb.style.backgroundColor = "black";
         } else if (text.includes("prende la cámara")) {
           startCamera();
-        } else {
-          alert("no reconoci el comando");
+        } else if (text.includes("apaga la cámara")) {
+          stopCamera();
         }
         console.log("Recognized text:", text);
 
         // Do something with the recognized text, such as toggling lights on and off
       });
 
+      recognition.start();
+
       // Get the start and stop buttons
       const startButton = document.getElementById("start-button");
       const stopButton = document.getElementById("stop-button");
-
-      // Add event listeners to the buttons
-      startButton.addEventListener("click", function () {
-        console.log("Start");
-        recognition.start();
-      });
-
-      stopButton.addEventListener("click", function () {
-        console.log("Close");
-        recognition.stop();
-      });
     } catch (error) {}
   })
   .catch(function (error) {

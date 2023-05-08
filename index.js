@@ -1,4 +1,5 @@
-const myBulb = document.getElementById("myBulb");
+const myBulb = document.getElementById("room-1-light-1");
+const room = document.getElementById("room");
 // Obtén el contenedor del video y el elemento de video
 const videoContainer = document.getElementById("video-container");
 const videoElement = document.getElementById("video-element");
@@ -48,9 +49,11 @@ navigator.mediaDevices
         // Si text incluye "prende la luz"
         // Entonces prende la luz
         if (text.includes("prende la luz")) {
-          myBulb.style.backgroundColor = "yellow";
+          room.classList.add("lights-on");
+          myBulb.classList.add("ligth-room--on");
         } else if (text.includes("apaga la luz")) {
-          myBulb.style.backgroundColor = "black";
+          room.classList.remove("lights-on");
+          myBulb.classList.remove("ligth-room--on");
         } else if (text.includes("prende la cámara")) {
           startCamera();
         } else if (text.includes("apaga la cámara")) {

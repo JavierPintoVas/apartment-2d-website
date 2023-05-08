@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  width: 600px;
+  height: 400px;
+}
+
+#room {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 337px;
+  height: 291px;
+  top: 48px;
+  left: 368px;
+  transition: all 1s ease;
+}
+
+.lights-on {
+  background-color: transparent !important;
+}
+
+.image {
+  width: 900px;
+  height: auto;
+}
+
+.ligth-room--on {
+  background-image: url("https://andlight.co.uk/images/fatboy-oloha-large-desert-packshot-05-105884_-p.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  transition: all 1s ease;
+}
+
+#room-1-light-1 {
+  top: 3px;
+  left: -7px;
+  width: 50px;
+  height: 45px;
+}
+
+#kitchen {
+  top: 200px;
+  left: 300px;
+  width: 200px;
+  height: 150px;
+}
+
+#div3 {
+  top: 100px;
+  left: 450px;
+  width: 100px;
+  height: 100px;
+}

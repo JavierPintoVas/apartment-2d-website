@@ -1,5 +1,6 @@
-const myBulb = document.getElementById("room-1-light-1");
-const room = document.getElementById("room");
+const bedroomLamp = document.getElementById("light-bedroom");
+const bedroom = document.getElementById("bedroom");
+const bathroom = document.getElementById("bathroom");
 // Obtén el contenedor del video y el elemento de video
 const videoContainer = document.getElementById("video-container");
 const videoElement = document.getElementById("video-element");
@@ -48,12 +49,16 @@ navigator.mediaDevices
         console.log(text);
         // Si text incluye "prende la luz"
         // Entonces prende la luz
-        if (text.includes("prende la luz")) {
-          room.classList.add("lights-on");
-          myBulb.classList.add("ligth-room--on");
-        } else if (text.includes("apaga la luz")) {
-          room.classList.remove("lights-on");
-          myBulb.classList.remove("ligth-room--on");
+        if (text.includes("prende la luz de la habitación")) {
+          bedroom.classList.add("lights-on");
+          bedroomLamp.classList.add("light-room--on");
+        } else if (text.includes("apaga la luz de la habitación")) {
+          bedroom.classList.remove("lights-on");
+          bedroomLamp.classList.remove("light-room--on");
+        } else if (text.includes("prende la luz del baño")) {
+          bathroom.classList.add("lights-on");
+        } else if (text.includes("apaga la luz del baño")) {
+          bathroom.classList.remove("lights-on");
         } else if (text.includes("prende la cámara")) {
           startCamera();
         } else if (text.includes("apaga la cámara")) {

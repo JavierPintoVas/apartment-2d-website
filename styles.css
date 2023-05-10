@@ -30,6 +30,7 @@ body {
   position: absolute;
   justify-content: center;
   color: #d2ebcd;
+  cursor: pointer;
 }
 
 .room span {
@@ -79,7 +80,7 @@ body {
   height: 285px;
 }
 
-#living-room {
+#livingRoom {
   position: absolute;
   top: 33px;
   left: 10px;
@@ -121,6 +122,10 @@ body {
 
 h2 {
   color: #d2ebcd;
+}
+
+ul {
+  padding-right: 20px;
 }
 
 li {

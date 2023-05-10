@@ -1,9 +1,18 @@
-const bedroomLamp = document.getElementById("light-bedroom");
-const bedroom = document.getElementById("bedroom");
 const bathroom = document.getElementById("bathroom");
-const kitchen = document.getElementById("kitchen");
-const livingRoom = document.getElementById("living-room");
+const bedroom = document.getElementById("bedroom");
 const hall = document.getElementById("hall");
+const kitchen = document.getElementById("kitchen");
+const livingRoom = document.getElementById("livingRoom");
+
+const rooms = {
+  bathroom,
+  bathroom,
+  bedroom,
+  hall,
+  kitchen,
+  livingRoom,
+};
+
 // Obtén el contenedor del video y el elemento de video
 const videoContainer = document.getElementById("video-container");
 const videoElement = document.getElementById("video-element");
@@ -54,7 +63,6 @@ navigator.mediaDevices
         // Entonces prende la luz
         if (text.includes("prende la luz de la habitación")) {
           bedroom.classList.add("lights-on");
-          bedroomLamp.classList.add("light-room--on");
         } else if (text.includes("apaga la luz de la habitación")) {
           bedroom.classList.remove("lights-on");
           bedroomLamp.classList.remove("light-room--on");
@@ -94,3 +102,7 @@ navigator.mediaDevices
   .catch(function (error) {
     console.error("Error getting user media:", error);
   });
+
+const toggleLight = (roomId) => {
+  rooms[roomId].classList.toggle("lights-on");
+};

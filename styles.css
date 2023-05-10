@@ -110,6 +110,7 @@ body {
   background-image: url("no_camera_480px.png");
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 
 #video-element {

@@ -4,6 +4,8 @@ const hall = document.getElementById("hall");
 const kitchen = document.getElementById("kitchen");
 const livingRoom = document.getElementById("livingRoom");
 
+let cameraStatus = false;
+
 const rooms = {
   bathroom,
   bathroom,
@@ -28,6 +30,7 @@ const startCamera = () => {
 
       // Inserta el elemento de video dentro del contenedor
       videoContainer.appendChild(videoElement);
+      cameraStatus = true;
     })
     .catch(function (error) {
       console.error("Error al obtener acceso a la cámara:", error);
@@ -38,6 +41,7 @@ const stopCamera = () => {
   if (videoElement.srcObject) {
     videoElement.pause();
     videoElement.srcObject = null;
+    cameraStatus = false;
   }
 };
 // Request permission to use the microphone
@@ -119,6 +123,14 @@ navigator.mediaDevices
   .catch(function (error) {
     console.error("Error getting user media:", error);
   });
+
+const toggleCamera = () => {
+  if (cameraStatus) {
+    stopCamera();
+  } else {
+    startCamera();
+  }
+};
 
 const toggleLight = (roomId) => {
   rooms[roomId].classList.toggle("lights-on");

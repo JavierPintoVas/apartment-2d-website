@@ -61,31 +61,48 @@ navigator.mediaDevices
         console.log(text);
         // Si text incluye "prende la luz"
         // Entonces prende la luz
-        if (text.includes("prende la luz de la habitación")) {
-          bedroom.classList.add("lights-on");
-        } else if (text.includes("apaga la luz de la habitación")) {
-          bedroom.classList.remove("lights-on");
-          bedroomLamp.classList.remove("light-room--on");
-        } else if (text.includes("prende la luz del baño")) {
-          bathroom.classList.add("lights-on");
-        } else if (text.includes("apaga la luz del baño")) {
-          bathroom.classList.remove("lights-on");
-        } else if (text.includes("prende la luz de la cocina")) {
-          kitchen.classList.add("lights-on");
-        } else if (text.includes("apaga la luz de la cocina")) {
-          kitchen.classList.remove("lights-on");
-        } else if (text.includes("prende la luz de la sala")) {
-          livingRoom.classList.add("lights-on");
-        } else if (text.includes("apaga la luz de la sala")) {
-          livingRoom.classList.remove("lights-on");
-        } else if (text.includes("prende la luz del pasillo")) {
-          hall.classList.add("lights-on");
-        } else if (text.includes("apaga la luz del pasillo")) {
-          hall.classList.remove("lights-on");
-        } else if (text.includes("prende la cámara")) {
-          startCamera();
-        } else if (text.includes("apaga la cámara")) {
-          stopCamera();
+        let action = null;
+        let elementId = null;
+
+        if (
+          text.includes("enciende") ||
+          text.includes("prende") ||
+          text.includes("prenda") ||
+          text.includes("ilumina") ||
+          text.includes("encender")
+        ) {
+          action = "add";
+        } else if (
+          text.includes("apaga") ||
+          text.includes("apagar") ||
+          text.includes("oscurece") ||
+          text.includes("oscurecer")
+        ) {
+          action = "remove";
+        }
+
+        if (action != null) {
+          if (text.includes("habitacion")) {
+            elementId = "bedroom";
+          } else if (text.includes("baño")) {
+            elementId = "bathroom";
+          } else if (text.includes("cocina")) {
+            elementId = "kitchen";
+          } else if (text.includes("sala")) {
+            elementId = "livingRoom";
+          } else if (text.includes("pasillo")) {
+            elementId = "hall";
+          } else if (text.includes("cámara")) {
+            if (action === "add") {
+              startCamera();
+            } else if (action === "remove") {
+              stopCamera();
+            }
+          }
+        }
+
+        if (action && elementId) {
+          rooms[elementId].classList[action]("lights-on");
         }
         console.log("Recognized text:", text);
 

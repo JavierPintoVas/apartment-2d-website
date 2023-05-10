@@ -9,24 +9,48 @@
   </head>
   <body>
     <div class="container">
-      <img src="Apartment.png" alt="Imagen" class="image" />
-
-      <div id="bedroom" class="room">
-        <div id="light-bedroom"></div>
+      <div>
+        <img src="Apartment.png" alt="Imagen" class="image" />
+        <div id="bedroom" class="room">
+          <div id="light-bedroom"></div>
+          <span>HABITACIÓN</span>
+        </div>
+        <div id="bathroom" class="room">
+          <div id="light-bedroom"></div>
+          <span>BAÑO</span>
+        </div>
+        <div id="kitchen" class="room">
+          <div id="light-bedroom"></div>
+          <span>COCINA</span>
+        </div>
+        <div id="living-room" class="room">
+          <div id="light-bedroom"></div>
+          <span>SALA</span>
+        </div>
+        <div id="hall" class="room">
+          <div id="light-bedroom"></div>
+          <span>PASILLO</span>
+        </div>
       </div>
 
-      <div id="bathroom" class="room">
-        <div id="light-bedroom"></div>
+      <div>
+        <div id="video-container">
+          <video id="video-element"></video>
+        </div>
+        <div class="key-words">
+          <h2>Palabras Clave</h2>
+          <ul>
+            <li>Prende la cámara</li>
+            <li>Apaga la cámara</li>
+            <li>
+              Prende la luz del baño / cocina / sala / habitación / pasillo
+            </li>
+            <li>
+              apaga la luz del baño / cocina / sala / habitación / pasillo
+            </li>
+          </ul>
+        </div>
       </div>
-
-      <div id="div3" class="overlay"></div>
-    </div>
-    <div
-      id="myBulb"
-      style="width: 200px; height: 200px; background-color: black"
-    ></div>
-    <div style="width: 500px; height: 500px" id="video-container">
-      <video id="video-element"></video>
     </div>
 
     <script src="./index.js"></script>

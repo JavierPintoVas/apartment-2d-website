@@ -1,36 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap");
+
+* {
+  font-family: "Poppins";
+  font-weight: 500;
+}
+
+body {
+  background-color: #000000;
+}
+
 .container {
   position: relative;
-  width: 600px;
-  height: 400px;
+  display: flex;
 }
 
 #bedroom {
   position: absolute;
-  width: 337px;
-  height: 291px;
+  width: 343px;
+  height: 294px;
   top: 48px;
-  left: 368px;
+  left: 356px;
 }
 
 .room {
   background-color: rgba(0, 0, 0, 0.8);
   transition: all 1s ease;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  justify-content: center;
+  color: #d2ebcd;
+}
+
+.room span {
+  font-weight: 300;
+  letter-spacing: 4px;
+  transition: 0.5s ease-in-out;
 }
 
 .lights-on {
   background-color: transparent !important;
 }
 
+.lights-on span {
+  color: #000000;
+  font-weight: 500;
+  background-color: #f5eded;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
 .image {
   width: 900px;
   height: auto;
-}
-
-.light-room--on {
-  background-image: url("https://andlight.co.uk/images/fatboy-oloha-large-desert-packshot-05-105884_-p.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  transition: all 1s ease;
 }
 
 #light-bedroom {
@@ -49,9 +71,58 @@
   height: 258px;
 }
 
-#div3 {
-  top: 100px;
-  left: 450px;
-  width: 100px;
-  height: 100px;
+#kitchen {
+  position: absolute;
+  top: 342px;
+  left: 468px;
+  width: 383px;
+  height: 285px;
+}
+
+#living-room {
+  position: absolute;
+  top: 33px;
+  left: 10px;
+  width: 346px;
+  height: 605px;
+}
+
+#hall {
+  position: absolute;
+  top: 342px;
+  left: 356px;
+  width: 112px;
+  height: 287px;
+}
+
+#hall span {
+  transform: rotate(-90deg);
+}
+
+#video-container {
+  background-color: #3e3636;
+  margin-top: 30px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  width: 418px;
+  background-image: url("no_camera_480px.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#video-element {
+  width: 418px;
+  height: 272px;
+  border-radius: 40px;
+  margin: 0;
+  object-fit: fill;
+}
+
+h2 {
+  color: #d2ebcd;
+}
+
+li {
+  color: #fffcef;
 }

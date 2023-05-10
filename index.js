@@ -1,6 +1,9 @@
 const bedroomLamp = document.getElementById("light-bedroom");
 const bedroom = document.getElementById("bedroom");
 const bathroom = document.getElementById("bathroom");
+const kitchen = document.getElementById("kitchen");
+const livingRoom = document.getElementById("living-room");
+const hall = document.getElementById("hall");
 // Obtén el contenedor del video y el elemento de video
 const videoContainer = document.getElementById("video-container");
 const videoElement = document.getElementById("video-element");
@@ -59,6 +62,18 @@ navigator.mediaDevices
           bathroom.classList.add("lights-on");
         } else if (text.includes("apaga la luz del baño")) {
           bathroom.classList.remove("lights-on");
+        } else if (text.includes("prende la luz de la cocina")) {
+          kitchen.classList.add("lights-on");
+        } else if (text.includes("apaga la luz de la cocina")) {
+          kitchen.classList.remove("lights-on");
+        } else if (text.includes("prende la luz de la sala")) {
+          livingRoom.classList.add("lights-on");
+        } else if (text.includes("apaga la luz de la sala")) {
+          livingRoom.classList.remove("lights-on");
+        } else if (text.includes("prende la luz del pasillo")) {
+          hall.classList.add("lights-on");
+        } else if (text.includes("apaga la luz del pasillo")) {
+          hall.classList.remove("lights-on");
         } else if (text.includes("prende la cámara")) {
           startCamera();
         } else if (text.includes("apaga la cámara")) {

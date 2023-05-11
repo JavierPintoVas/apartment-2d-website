@@ -1,18 +1,25 @@
-const bathroom = document.getElementById("bathroom");
-const bedroom = document.getElementById("bedroom");
+const bathroomBedroomOne = document.getElementById("bathroomBedroomOne");
+const bathroomBedroomTwo = document.getElementById("bathroomBedroomTwo");
+const mainBedroom = document.getElementById("mainBedroom");
+const bedroomTwo = document.getElementById("bedroomTwo");
+const bedroomThree = document.getElementById("bedroomThree");
 const hall = document.getElementById("hall");
 const kitchen = document.getElementById("kitchen");
 const livingRoom = document.getElementById("livingRoom");
+const laundry = document.getElementById("laundry");
 
 let cameraStatus = false;
 
 const rooms = {
-  bathroom,
-  bathroom,
-  bedroom,
+  bathroomBedroomOne,
+  bathroomBedroomTwo,
+  bedroomTwo,
+  bedroomThree,
+  mainBedroom,
   hall,
   kitchen,
   livingRoom,
+  laundry,
 };
 
 // Obtén el contenedor del video y el elemento de video
@@ -86,16 +93,32 @@ navigator.mediaDevices
         }
 
         if (action != null) {
-          if (text.includes("habitacion")) {
-            elementId = "bedroom";
+          if (text.includes("habitación")) {
+            if (text.includes("uno") || text.includes("principal")) {
+              elementId = "mainBedroom";
+            } else if (text.includes("dos") || text.includes("segunda")) {
+              elementId = "bedroomTwo";
+            } else if (text.includes("tres") || text.includes("tercera")) {
+              elementId = "bedroomThree";
+            }
           } else if (text.includes("baño")) {
-            elementId = "bathroom";
+            if (text.includes("uno") || text.includes("principal")) {
+              elementId = "bathroomBedroomOne";
+            } else if (
+              text.includes("dos") ||
+              text.includes("social") ||
+              text.includes("pasillo")
+            ) {
+              elementId = "bathroomBedroomTwo";
+            }
           } else if (text.includes("cocina")) {
             elementId = "kitchen";
           } else if (text.includes("sala")) {
             elementId = "livingRoom";
           } else if (text.includes("pasillo")) {
             elementId = "hall";
+          } else if (text.includes("lavandería")) {
+            elementId = "laundry";
           } else if (text.includes("cámara")) {
             if (action === "add") {
               startCamera();

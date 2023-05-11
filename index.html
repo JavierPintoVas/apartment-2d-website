@@ -10,14 +10,48 @@
   <body>
     <div class="container">
       <div>
-        <img src="Apartment.png" alt="Imagen" class="image" />
-        <div id="bedroom" class="room" onclick="toggleLight('bedroom')">
+        <img src="Apartment2.png" alt="Imagen" class="image" />
+        <!--Zonas de apartamento-->
+        <div id="mainBedroom" class="room" onclick="toggleLight('mainBedroom')">
           <div id="light-bedroom"></div>
-          <span>HABITACIÓN</span>
+          <span
+            >HABITACIÓN <br />
+            PRINCIPAL</span
+          >
         </div>
-        <div id="bathroom" class="room" onclick="toggleLight('bathroom')">
+        <div id="bedroomTwo" class="room" onclick="toggleLight('bedroomTwo')">
           <div id="light-bedroom"></div>
-          <span>BAÑO</span>
+          <span
+            >HABITACIÓN <br />
+            DOS</span
+          >
+        </div>
+        <div
+          id="bedroomThree"
+          class="room"
+          onclick="toggleLight('bedroomThree')"
+        >
+          <div id="light-bedroom"></div>
+          <span
+            >HABITACIÓN <br />
+            TRES</span
+          >
+        </div>
+        <div
+          id="bathroomBedroomOne"
+          class="room"
+          onclick="toggleLight('bathroomBedroomOne')"
+        >
+          <div id="light-bedroom"></div>
+          <span>BAÑO<br />PRINCIPAL</span>
+        </div>
+        <div
+          id="bathroomBedroomTwo"
+          class="room"
+          onclick="toggleLight('bathroomBedroomTwo')"
+        >
+          <div id="light-bedroom"></div>
+          <span>BAÑO<br />SOCIAL</span>
         </div>
         <div id="kitchen" class="room" onclick="toggleLight('kitchen')">
           <div id="light-bedroom"></div>
@@ -30,6 +64,10 @@
         <div id="hall" class="room" onclick="toggleLight('hall')">
           <div id="light-bedroom"></div>
           <span>PASILLO</span>
+        </div>
+        <div id="laundry" class="room" onclick="toggleLight('laundry')">
+          <div id="light-bedroom"></div>
+          <span>LAVANDERÍA</span>
         </div>
       </div>
 

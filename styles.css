@@ -142,6 +142,14 @@ div span {
   height: 74px;
 }
 
+#balcony {
+  position: absolute;
+  top: 54px;
+  left: 510px;
+  width: 228px;
+  height: 84px;
+}
+
 #video-container {
   background-color: #3e3636;
   margin-top: 30px;

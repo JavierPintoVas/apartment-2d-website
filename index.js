@@ -7,6 +7,7 @@ const hall = document.getElementById("hall");
 const kitchen = document.getElementById("kitchen");
 const livingRoom = document.getElementById("livingRoom");
 const laundry = document.getElementById("laundry");
+const balcony = document.getElementById("balcony");
 
 let cameraStatus = false;
 
@@ -20,6 +21,7 @@ const rooms = {
   kitchen,
   livingRoom,
   laundry,
+  balcony,
 };
 
 // Obtén el contenedor del video y el elemento de video
@@ -119,6 +121,8 @@ navigator.mediaDevices
             elementId = "hall";
           } else if (text.includes("lavandería")) {
             elementId = "laundry";
+          } else if (text.includes("balcón")) {
+            elementId = "balcony";
           } else if (text.includes("cámara")) {
             if (action === "add") {
               startCamera();

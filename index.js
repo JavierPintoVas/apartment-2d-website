@@ -77,6 +77,8 @@ navigator.mediaDevices
         let action = null;
         let elementId = null;
 
+        console.log(text);
+
         if (
           text.includes("enciende") ||
           text.includes("prende") ||
@@ -129,6 +131,10 @@ navigator.mediaDevices
             } else if (action === "remove") {
               stopCamera();
             }
+          } else if (text.includes("todas las luces")) {
+            Object.keys(rooms).forEach((roomId) => {
+              rooms[roomId].classList[action]("lights-on");
+            });
           }
         }
 

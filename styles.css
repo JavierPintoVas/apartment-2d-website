@@ -187,3 +187,130 @@ h1,
 p {
   color: #d2ebcd;
 }
+
+.door {
+  transition: transform 0.5s ease-in-out; /* Transición suave para la animación */
+  cursor: pointer;
+}
+
+.open {
+  transform: rotate(90deg);
+}
+
+#bathroomBedroomOneDoor {
+  position: absolute;
+  top: 367px;
+  left: 300px;
+  width: 13px;
+  height: 56px;
+  background: #804000;
+  transform-origin: top center;
+}
+
+#bathroomBedroomOneDoor.open {
+  transform-origin: top center;
+  transform: rotate(-90deg);
+}
+
+#mainBedroomDoor {
+  position: absolute;
+  top: 293px;
+  left: 256px;
+  width: 13px;
+  height: 66px;
+  background: #804000;
+}
+
+#mainBedroomDoor.open {
+  transform-origin: top center;
+  transform: rotate(90deg);
+}
+
+#bedroomTwoDoor {
+  position: absolute;
+  top: 281px;
+  left: 269px;
+  width: 69px;
+  height: 13px;
+  background: #804000;
+  transform-origin: center right;
+}
+
+#bedroomTwoDoor.open {
+  transform-origin: center right;
+  transform: rotate(90deg);
+}
+
+#bedroomThreeDoor {
+  position: absolute;
+  top: 281px;
+  left: 344px;
+  width: 69px;
+  height: 13px;
+  background: #804000;
+  transform-origin: center left;
+}
+
+#bedroomThreeDoor.open {
+  transform-origin: center left;
+  transform: rotate(-90deg);
+}
+
+#balconyDoor {
+  position: absolute;
+  top: 124px;
+  left: 597px;
+  width: 69px;
+  height: 13px;
+  background: #804000;
+}
+
+#balconyDoor.open {
+  transform: rotate(0deg);
+  transform: translateX(-67px);
+}
+
+#laundryDoor {
+  position: absolute;
+  top: 221px;
+  left: 739px;
+  width: 37px;
+  height: 13px;
+  background: #804000;
+  transform-origin: center left;
+}
+
+#laundryDoor.open {
+  transform-origin: center left;
+  transform: rotate(90deg);
+}
+
+#bathroomBedroomTwoDoor {
+  position: absolute;
+  top: 360px;
+  left: 444px;
+  width: 56px;
+  height: 13px;
+  background: #804000;
+  transform-origin: center right;
+}
+
+#bathroomBedroomTwoDoor.open {
+  transform-origin: center right;
+  transform: rotate(-90deg);
+}
+
+#principalDoor {
+  position: absolute;
+  top: 530px;
+  left: 654px;
+  width: 73px;
+  height: 11px;
+  background: #804000;
+  transform-origin: center right;
+}
+
+#principalDoor.open {
+  transform-origin: center right;
+  transform: rotate(90deg);
+}

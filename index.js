@@ -9,6 +9,19 @@ const livingRoom = document.getElementById("livingRoom");
 const laundry = document.getElementById("laundry");
 const balcony = document.getElementById("balcony");
 
+const principalDoor = document.getElementById("principalDoor");
+const bathroomBedroomOneDoor = document.getElementById(
+  "bathroomBedroomOneDoor"
+);
+const bathroomBedroomTwoDoor = document.getElementById(
+  "bathroomBedroomTwoDoor"
+);
+const mainBedroomDoor = document.getElementById("mainBedroomDoor");
+const bedroomTwoDoor = document.getElementById("bedroomTwoDoor");
+const bedroomThreeDoor = document.getElementById("bedroomThreeDoor");
+const balconyDoor = document.getElementById("balconyDoor");
+const laundryDoor = document.getElementById("laundryDoor");
+
 let cameraStatus = false;
 
 const rooms = {
@@ -22,6 +35,17 @@ const rooms = {
   livingRoom,
   laundry,
   balcony,
+};
+
+const doorsAndWindows = {
+  principalDoor,
+  bathroomBedroomOneDoor,
+  bathroomBedroomTwoDoor,
+  mainBedroomDoor,
+  bedroomTwoDoor,
+  bedroomThreeDoor,
+  balconyDoor,
+  laundryDoor,
 };
 
 // Obtén el contenedor del video y el elemento de video
@@ -70,12 +94,15 @@ navigator.mediaDevices
       recognition.addEventListener("result", function (event) {
         console.log(event);
         // TODO Quitar caracteres especiales, tildes!
-        const text = event.results[event.results.length - 1][0].transcript; // Hola Javier, prende la luz por favor
+        const text =
+          event.results[event.results.length - 1][0].transcript.toLowerCase(); // Hola Javier, prende la luz por favor
         console.log(text);
         // Si text incluye "prende la luz"
         // Entonces prende la luz
-        let action = null;
-        let elementId = null;
+        let actionType = "";
+        let action = "";
+        let elementId = "";
+        let actionDoor = null;
 
         console.log(text);
 
@@ -86,6 +113,7 @@ navigator.mediaDevices
           text.includes("ilumina") ||
           text.includes("encender")
         ) {
+          actionType = "light";
           action = "add";
         } else if (
           text.includes("apaga") ||
@@ -93,6 +121,13 @@ navigator.mediaDevices
           text.includes("oscurece") ||
           text.includes("oscurecer")
         ) {
+          actionType = "light";
+          action = "remove";
+        } else if (text.includes("abre") || text.includes("abrir")) {
+          actionType = "doorsAndWindows";
+          action = "add";
+        } else if (text.includes("cierra") || text.includes("cerrar")) {
+          actionType = "doorsAndWindows";
           action = "remove";
         }
 
@@ -135,12 +170,35 @@ navigator.mediaDevices
             Object.keys(rooms).forEach((roomId) => {
               rooms[roomId].classList[action]("lights-on");
             });
+          } else if (text.includes("puerta principal")) {
+            elementId = "principalDoor";
+          } else if (text.includes("todas las puertas")) {
+            Object.keys(doorsAndWindows).forEach((roomId) => {
+              doorsAndWindows[roomId].classList[action]("open");
+            });
+          }
+
+          if (elementId) {
+            if (text.includes("puerta principal")) {
+              doorsAndWindows[elementId].classList[action]("open");
+            } else if (text.includes("puerta")) {
+              elementId += "Door";
+            }
           }
         }
 
-        if (action && elementId) {
-          rooms[elementId].classList[action]("lights-on");
+        console.log(action);
+        console.log(actionType);
+        console.log(elementId);
+
+        if (action && actionType && elementId) {
+          if (actionType === "light") {
+            rooms[elementId].classList[action]("lights-on");
+          } else if (actionType === "doorsAndWindows") {
+            doorsAndWindows[elementId].classList[action]("open");
+          }
         }
+
         console.log("Recognized text:", text);
 
         // Do something with the recognized text, such as toggling lights on and off

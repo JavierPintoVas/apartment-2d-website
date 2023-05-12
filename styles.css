@@ -16,7 +16,7 @@ body {
 
 #mainBedroom {
   position: absolute;
-  width: 267px;
+  width: 229px;
   height: 239px;
   top: 292px;
   left: 35px;
@@ -97,13 +97,9 @@ div span {
 #bathroomBedroomOne {
   position: absolute;
   top: 366px;
-  left: 302px;
-  width: 102px;
-  height: 166px;
-}
-
-#bathroomBedroomOne span {
-  transform: rotate(90deg);
+  left: 264px;
+  width: 139px;
+  height: 165px;
 }
 
 #bathroomBedroomTwo span {
@@ -137,8 +133,8 @@ div span {
 #hall {
   position: absolute;
   top: 292px;
-  left: 302px;
-  width: 208px;
+  left: 264px;
+  width: 246px;
   height: 74px;
 }
 
@@ -200,7 +196,7 @@ p {
 #bathroomBedroomOneDoor {
   position: absolute;
   top: 367px;
-  left: 300px;
+  left: 257px;
   width: 13px;
   height: 56px;
   background: #804000;
@@ -219,6 +215,7 @@ p {
   width: 13px;
   height: 66px;
   background: #804000;
+  transform-origin: top center;
 }
 
 #mainBedroomDoor.open {

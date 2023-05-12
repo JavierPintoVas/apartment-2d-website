@@ -226,3 +226,7 @@ const toggleCamera = () => {
 const toggleLight = (roomId) => {
   rooms[roomId].classList.toggle("lights-on");
 };
+
+const toggleDoorsAndWindows = (roomId) => {
+  doorsAndWindows[roomId].classList.toggle("open");
+};

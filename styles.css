@@ -187,6 +187,7 @@ p {
 .door {
   transition: transform 0.5s ease-in-out; /* Transición suave para la animación */
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .open {

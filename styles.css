@@ -372,18 +372,19 @@ p {
   display: none;
   min-width: 240px;
   position: fixed;
-  top: 89%;
-  left: 12%;
+  top: 50%;
+  left: 81%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 9px;
+  padding: 2px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-#modal h3 {
+#modal p {
   color: #3e3636;
-  margin: 10px;
+  margin: 7px;
+  text-align: center;
 }
 
 #modal button {

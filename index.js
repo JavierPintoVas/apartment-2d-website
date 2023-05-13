@@ -262,3 +262,15 @@ const toggleDoorsAndWindows = (roomId) => {
 const hideModal = () => {
   modalElement.style.display = "none";
 };
+
+const saveName = () => {
+  const input = document.getElementById("configurationPanelInput");
+  const name = input.value;
+  console.log(name);
+  if (name.length > 4) {
+    const textSpeech = `Hola ${name} tu configuración ha sido guardada`;
+    const utterance = new SpeechSynthesisUtterance(textSpeech);
+    speechSynthesis.speak(utterance);
+    input.value = "";
+  }
+};

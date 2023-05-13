@@ -80,6 +80,7 @@ body {
   width: 850px;
   height: auto;
   margin: 20px;
+  margin-bottom: 0;
 }
 
 #light-bedroom {
@@ -396,4 +397,8 @@ p {
 
 #modal button:hover {
   color: gray;
+}
+
+#configurationPanel {
+  color: #d2ebcd;
 }

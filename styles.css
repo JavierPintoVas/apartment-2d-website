@@ -304,7 +304,7 @@ p {
   left: 654px;
   width: 73px;
   height: 11px;
-  background: #804000;
+  background: #7a7a7a;
   transform-origin: center right;
 }
 
@@ -366,4 +366,33 @@ p {
 
 .window.open.horizontal {
   width: 40px !important;
+}
+
+#modal {
+  display: none;
+  min-width: 240px;
+  position: fixed;
+  top: 89%;
+  left: 12%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 9px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#modal h3 {
+  color: #3e3636;
+  margin: 10px;
+}
+
+#modal button {
+  float: right;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}
+
+#modal button:hover {
+  color: gray;
 }

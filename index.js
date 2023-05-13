@@ -43,23 +43,56 @@ let cameraStatus = false;
 // Obtén el contenedor del video y el elemento de video
 const videoContainer = document.getElementById("video-container");
 const videoElement = document.getElementById("video-element");
+const modalElement = document.getElementById("modal");
+const modalTextElement = document.getElementById("modalText");
 // Solicita acceso a la cámara del usuario
 const startCamera = () => {
-  navigator.mediaDevices
-    .getUserMedia({ video: true })
-    .then(function (stream) {
-      // Muestra el video en el elemento de video
+  // Cargar el modelo de detección de objetos
+  cocoSsd.load().then((model) => {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then(function (stream) {
+        // Muestra el video en el elemento de video
 
-      videoElement.srcObject = stream;
-      videoElement.play();
+        videoElement.srcObject = stream;
+        videoElement.play();
 
-      // Inserta el elemento de video dentro del contenedor
-      videoContainer.appendChild(videoElement);
-      cameraStatus = true;
-    })
-    .catch(function (error) {
-      console.error("Error al obtener acceso a la cámara:", error);
-    });
+        // Inserta el elemento de video dentro del contenedor
+        videoContainer.appendChild(videoElement);
+        cameraStatus = true;
+        setInterval(() => {
+          model.detect(videoElement).then((predictions) => {
+            console.log(predictions);
+            // Verificar si se detectó un perro o un humano
+            const hasDog = predictions.some(
+              (prediction) => prediction.class === "dog"
+            );
+            const hasPerson = predictions.some(
+              (prediction) => prediction.class === "person"
+            );
+
+            // Mostrar el modal y reproducir la voz si se detecta un perro o un humano
+            if (hasDog || hasPerson) {
+              modalTextElement.textContent = `${hasDog ? "Perro " : ""}${
+                hasDog && hasPerson ? "y " : ""
+              }${hasPerson ? "Humano" : ""} detectado`;
+              modalElement.style.display = "block";
+
+              // Reproducir voz
+              const utterance = new SpeechSynthesisUtterance(
+                modalTextElement.textContent
+              );
+              speechSynthesis.speak(utterance);
+            } else {
+              modalElement.style.display = "none";
+            }
+          });
+        }, 5000);
+      })
+      .catch(function (error) {
+        console.error("Error al obtener acceso a la cámara:", error);
+      });
+  });
 };
 
 const stopCamera = () => {
@@ -224,4 +257,8 @@ const toggleLight = (roomId) => {
 
 const toggleDoorsAndWindows = (roomId) => {
   doorsAndWindows[roomId].classList.toggle("open");
+};
+
+const hideModal = () => {
+  modalElement.style.display = "none";
 };

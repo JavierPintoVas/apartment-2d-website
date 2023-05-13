@@ -88,33 +88,26 @@ navigator.mediaDevices
         // TODO Quitar caracteres especiales, tildes!
         const text =
           event.results[event.results.length - 1][0].transcript.toLowerCase(); // Hola Javier, prende la luz por favor
-        console.log(text);
         // Si text incluye "prende la luz"
         // Entonces prende la luz
         let actionType = "";
         let action = "";
         let elementId = "";
-        let actionDoor = null;
 
         console.log(text);
 
-        if (
-          text.includes("enciende") ||
-          text.includes("prende") ||
-          text.includes("prenda") ||
-          text.includes("ilumina") ||
-          text.includes("encender")
-        ) {
-          actionType = "light";
-          action = "add";
-        } else if (
-          text.includes("apaga") ||
-          text.includes("apagar") ||
-          text.includes("oscurece") ||
-          text.includes("oscurecer")
-        ) {
+        const activationWords =
+          /(enciende|prende|prenda|ilumina|encender|activa|activar)/i;
+
+        const deactivationWords =
+          /(apaga|apagar|oscurece|oscurecer|desactiva|desactivar)/i;
+
+        if (deactivationWords.test(text)) {
           actionType = "light";
           action = "remove";
+        } else if (activationWords.test(text)) {
+          actionType = "light";
+          action = "add";
         } else if (text.includes("abre") || text.includes("abrir")) {
           actionType = "doorsAndWindows";
           action = "add";

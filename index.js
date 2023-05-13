@@ -1,52 +1,44 @@
-const bathroomBedroomOne = document.getElementById("bathroomBedroomOne");
-const bathroomBedroomTwo = document.getElementById("bathroomBedroomTwo");
-const mainBedroom = document.getElementById("mainBedroom");
-const bedroomTwo = document.getElementById("bedroomTwo");
-const bedroomThree = document.getElementById("bedroomThree");
-const hall = document.getElementById("hall");
-const kitchen = document.getElementById("kitchen");
-const livingRoom = document.getElementById("livingRoom");
-const laundry = document.getElementById("laundry");
-const balcony = document.getElementById("balcony");
+const roomsIds = [
+  "bathroomBedroomOne",
+  "bathroomBedroomTwo",
+  "mainBedroom",
+  "bedroomTwo",
+  "bedroomThree",
+  "hall",
+  "kitchen",
+  "livingRoom",
+  "laundry",
+  "balcony",
+];
 
-const principalDoor = document.getElementById("principalDoor");
-const bathroomBedroomOneDoor = document.getElementById(
-  "bathroomBedroomOneDoor"
-);
-const bathroomBedroomTwoDoor = document.getElementById(
-  "bathroomBedroomTwoDoor"
-);
-const mainBedroomDoor = document.getElementById("mainBedroomDoor");
-const bedroomTwoDoor = document.getElementById("bedroomTwoDoor");
-const bedroomThreeDoor = document.getElementById("bedroomThreeDoor");
-const balconyDoor = document.getElementById("balconyDoor");
-const laundryDoor = document.getElementById("laundryDoor");
+const doorsAndWindowsIds = [
+  "principalDoor",
+  "bathroomBedroomOneDoor",
+  "bathroomBedroomTwoDoor",
+  "mainBedroomDoor",
+  "bedroomTwoDoor",
+  "bedroomThreeDoor",
+  "balconyDoor",
+  "laundryDoor",
+  "mainBedroomWindow",
+  "bedroomTwoWindow",
+  "kitchenWindow",
+  "livingRoomWindow",
+];
+
+const rooms = {};
+const doorsAndWindows = {};
+
+roomsIds.forEach((roomId) => {
+  rooms[roomId] = document.getElementById(roomId);
+});
+
+doorsAndWindowsIds.forEach((doorsAndWindowsId) => {
+  doorsAndWindows[doorsAndWindowsId] =
+    document.getElementById(doorsAndWindowsId);
+});
 
 let cameraStatus = false;
-
-const rooms = {
-  bathroomBedroomOne,
-  bathroomBedroomTwo,
-  bedroomTwo,
-  bedroomThree,
-  mainBedroom,
-  hall,
-  kitchen,
-  livingRoom,
-  laundry,
-  balcony,
-};
-
-const doorsAndWindows = {
-  principalDoor,
-  bathroomBedroomOneDoor,
-  bathroomBedroomTwoDoor,
-  mainBedroomDoor,
-  bedroomTwoDoor,
-  bedroomThreeDoor,
-  balconyDoor,
-  laundryDoor,
-};
 
 // Obtén el contenedor del video y el elemento de video
 const videoContainer = document.getElementById("video-container");
@@ -174,7 +166,15 @@ navigator.mediaDevices
             elementId = "principalDoor";
           } else if (text.includes("todas las puertas")) {
             Object.keys(doorsAndWindows).forEach((roomId) => {
-              doorsAndWindows[roomId].classList[action]("open");
+              if (roomId.includes("Door")) {
+                doorsAndWindows[roomId].classList[action]("open");
+              }
+            });
+          } else if (text.includes("todas las ventanas")) {
+            Object.keys(doorsAndWindows).forEach((roomId) => {
+              if (roomId.includes("Window")) {
+                doorsAndWindows[roomId].classList[action]("open");
+              }
             });
           }
 
@@ -183,6 +183,8 @@ navigator.mediaDevices
               doorsAndWindows[elementId].classList[action]("open");
             } else if (text.includes("puerta")) {
               elementId += "Door";
+            } else if (text.includes("ventana")) {
+              elementId += "Window";
             }
           }
         }

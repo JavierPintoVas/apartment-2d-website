@@ -190,7 +190,7 @@ p {
   border-radius: 5px;
 }
 
-.open {
+.open.door {
   transform: rotate(90deg);
 }
 
@@ -293,7 +293,7 @@ p {
   transform-origin: center right;
 }
 
-#bathroomBedroomTwoDoor.open {
+#bathroomBedroomTwo.open {
   transform-origin: center right;
   transform: rotate(-90deg);
 }
@@ -311,4 +311,59 @@ p {
 #principalDoor.open {
   transform-origin: center right;
   transform: rotate(90deg);
+}
+
+.window {
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.window.vertical {
+  width: 10px;
+  height: 108px;
+}
+
+.window.horizontal {
+  width: 108px;
+  height: 10px;
+}
+
+#mainBedroomWindow {
+  position: absolute;
+  top: 356px;
+  left: 30px;
+  background: lightblue;
+  transform-origin: center right;
+}
+
+#bedroomTwoWindow {
+  position: absolute;
+  top: 91px;
+  left: 126px;
+  background: lightblue;
+  transform-origin: center right;
+}
+
+#kitchenWindow {
+  position: absolute;
+  top: 293px;
+  left: 853px;
+  background: lightblue;
+  transform-origin: center right;
+}
+
+#livingRoomWindow {
+  position: absolute;
+  top: 530px;
+  left: 533px;
+  background: lightblue;
+  transform-origin: center right;
+}
+
+.window.open.vertical {
+  height: 40px !important;
+}
+
+.window.open.horizontal {
+  width: 40px !important;
 }

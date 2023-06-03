@@ -243,6 +243,18 @@ navigator.mediaDevices
     console.error("Error getting user media:", error);
   });
 
+const saveName = () => {
+  const input = document.getElementById("MyNameIs");
+  const name = input.value;
+  console.log(name);
+  if (name.length > 4) {
+    const textSpeech = `Hola mi nombre es ${name} pero todos me dicen Giorgio`;
+    const utterance = new SpeechSynthesisUtterance(textSpeech);
+    speechSynthesis.speak(utterance);
+    input.value = "";
+  }
+};
+
 function guardarConfiguracion() {
   var nombreInput = document.getElementById("nombreInput");
   var lucesCheckbox = document.getElementById("lucesCheckbox");

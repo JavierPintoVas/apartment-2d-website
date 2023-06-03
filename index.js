@@ -243,6 +243,36 @@ navigator.mediaDevices
     console.error("Error getting user media:", error);
   });
 
+function guardarConfiguracion() {
+  var nombreInput = document.getElementById("nombreInput");
+  var lucesCheckbox = document.getElementById("lucesCheckbox");
+  var puertasCheckbox = document.getElementById("puertasCheckbox");
+  var reconocimientoCheckbox = document.getElementById(
+    "reconocimientoCheckbox"
+  );
+
+  var nombreUsuario = nombreInput.value;
+  var lucesActivadas = lucesCheckbox.checked;
+  var puertasAbiertas = puertasCheckbox.checked;
+  var reconocimientoActivado = reconocimientoCheckbox.checked;
+
+  // Aquí puedes hacer lo que necesites con las configuraciones guardadas y el nombre del usuario
+
+  var panel = document.getElementById("panel");
+  panel.style.display = "none";
+
+  // Reproducir el nombre del usuario en forma de mensaje de voz
+  var mensajeVoz = new SpeechSynthesisUtterance();
+  mensajeVoz.text =
+    "Hola " + nombreUsuario + ", tu configuración ha sido guardada.";
+  speechSynthesis.speak(mensajeVoz);
+}
+
+window.onload = function () {
+  var panel = document.getElementById("panel");
+  panel.style.display = "flex";
+};
+
 const toggleCamera = () => {
   if (cameraStatus) {
     stopCamera();
@@ -252,7 +282,10 @@ const toggleCamera = () => {
 };
 
 const toggleLight = (roomId) => {
-  rooms[roomId].classList.toggle("lights-on");
+  if (lucesActivadas === checked) {
+    rooms[roomId].classList.toggle("lights-on");
+  } else {
+  }
 };
 
 const toggleDoorsAndWindows = (roomId) => {
@@ -261,16 +294,4 @@ const toggleDoorsAndWindows = (roomId) => {
 
 const hideModal = () => {
   modalElement.style.display = "none";
-};
-
-const saveName = () => {
-  const input = document.getElementById("configurationPanelInput");
-  const name = input.value;
-  console.log(name);
-  if (name.length > 4) {
-    const textSpeech = `Hola ${name} tu configuración ha sido guardada`;
-    const utterance = new SpeechSynthesisUtterance(textSpeech);
-    speechSynthesis.speak(utterance);
-    input.value = "";
-  }
 };

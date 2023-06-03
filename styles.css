@@ -410,3 +410,30 @@ em {
   color: #d2ebcd;
   padding-left: 20px;
 }
+
+.panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.panel h2 {
+  margin-bottom: 20px;
+}
+
+.panel div {
+  margin-bottom: 10px;
+}
+
+.panel button {
+  padding: 10px 20px;
+}

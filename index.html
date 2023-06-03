@@ -8,6 +8,26 @@
     <title>Apartment</title>
   </head>
   <body>
+    <div id="panel" class="panel">
+      <h2>Configuración</h2>
+      <div>
+        <label for="nombreInput">Nombre de usuario:</label>
+        <input type="text" id="nombreInput" placeholder="Ingresa tu nombre" />
+      </div>
+      <div>
+        <input type="checkbox" id="lucesCheckbox" />
+        <label for="lucesCheckbox">Luces</label>
+      </div>
+      <div>
+        <input type="checkbox" id="puertasCheckbox" />
+        <label for="puertasCheckbox">Puertas</label>
+      </div>
+      <div>
+        <input type="checkbox" id="reconocimientoCheckbox" />
+        <label for="reconocimientoCheckbox">Reconocimiento de voz</label>
+      </div>
+      <button onclick="guardarConfiguracion()">Guardar</button>
+    </div>
     <div class="container">
       <div>
         <img src="Apartment2.png" alt="Imagen" class="image" />
